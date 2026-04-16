@@ -12,9 +12,10 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
 export const metadata: Metadata = {
-  title: "Contact Form App",
-  description: "Simple form with Supabase",
+  title: "Contact Dashboard",
+  description: "Manage your contacts with ease - Built with Next.js & Supabase",
 };
 
 export default function RootLayout({
@@ -26,8 +27,12 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
     >
-      <body className="min-h-screen antialiased bg-white text-black">
+      <body 
+        className="min-h-screen antialiased"
+        suppressHydrationWarning
+      >
         {children}
         <Toaster position="top-right" richColors />
       </body>

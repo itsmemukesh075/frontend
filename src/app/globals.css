@@ -24,3 +24,10 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Enable dark mode class-based switching */
+@layer base {
+  html {
+    color-scheme: light dark;
+  }
+}
