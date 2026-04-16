@@ -1,68 +1,93 @@
 # Contact Dashboard
 
-A simple dashboard application built with Next.js and Supabase that allows users to submit and view contact information.
+A simple full-stack dashboard application built with Next.js and Supabase that allows users to submit and persist contact information with real-time feedback.
 
-## Live Demo
+---
 
-**Production URL:** [Deploy on Vercel](https://vercel.com) *(Update after deployment)*
+## 🚀 Live Demo
 
-## Repository
+**Production URL:** https://your-render-url.onrender.com
+*(Replace with your actual deployed URL)*
 
-**GitHub URL:** [Your Repository](https://github.com) *(Update with your repo)*
+---
 
-## Tech Stack
+## 📦 Repository
 
-- **Frontend:** Next.js 16, React 19, TypeScript
-- **Styling:** Tailwind CSS 4
-- **Database:** Supabase (PostgreSQL)
-- **Deployment:** Vercel
-- **AI Tool:** Cursor / Qoder
+**GitHub URL:** https://github.com/your-username/your-repo
+*(Ensure public access or provide invite if private)*
 
-## Local Development
+---
+
+## 🛠 Tech Stack
+
+* **Frontend:** Next.js 16, React 19, TypeScript
+* **Styling:** Tailwind CSS 4
+* **Form Handling:** React Hooks (useState, useEffect)
+* **Database:** Supabase (PostgreSQL)
+* **Deployment:** Render
+* **AI Tooling:** Cursor 
+
+---
+
+## ⚙️ Local Development
 
 ### Prerequisites
 
-- Node.js 18+ installed
-- A Supabase account and project
+* Node.js 18+
+* Supabase project
+
+---
 
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <your-repo-url>
 cd frontend
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
-3. Set up environment variables:
+3. Create `.env.local` file:
 
-Create a `.env` file in the root directory with the following:
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_publishable_key
 ```
 
-4. Run the development server:
+---
+
+4. Run development server:
+
 ```bash
 npm run dev
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+---
 
-## Environment Variables
+5. Open in browser:
 
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `NEXT_PUBLIC_SUPABASE_URL` | Your Supabase project URL | Yes |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Your Supabase anonymous/public key | Yes |
+```
+http://localhost:3000
+```
 
-## Database Schema
+---
 
-The application uses a `contacts` table with the following structure:
+## 🔐 Environment Variables
+
+| Variable                      | Description                     | Required |
+| ----------------------------- | ------------------------------- | -------- |
+| NEXT_PUBLIC_SUPABASE_URL      | Supabase project URL            | ✅        |
+| NEXT_PUBLIC_SUPABASE_ANON_KEY | Supabase publishable (anon) key | ✅        |
+
+---
+
+## 🗄 Database Schema
 
 ```sql
 CREATE TABLE contacts (
@@ -73,40 +98,86 @@ CREATE TABLE contacts (
 );
 ```
 
-## Features
+---
 
-- ✅ Form validation (non-empty fields, phone format validation)
-- ✅ Real-time persistence to Supabase database
-- ✅ Display of saved contacts
-- ✅ Loading states and error handling
-- ✅ Clean, responsive UI with Tailwind CSS
-- ✅ TypeScript for type safety
+## ✨ Features
 
-## Assumptions
+* ✅ Form validation using Zod
+* ✅ Managed form state with React Hook Form
+* ✅ Data persistence using Supabase
+* ✅ Toast notifications for success/error feedback
+* ✅ Responsive dark-mode UI
+* ✅ Clean and minimal design
+* ✅ Type-safe implementation with TypeScript
 
-1. Supabase project is already set up with the `contacts` table
-2. Row Level Security (RLS) is disabled or properly configured for public access
-3. The database schema matches the expected structure above
+---
 
-## Deployment to Vercel
+## ⚠️ Assumptions
 
-1. Push your code to GitHub
-2. Go to [Vercel](https://vercel.com)
-3. Import your repository
-4. Add environment variables in Vercel dashboard:
-   - `NEXT_PUBLIC_SUPABASE_URL`
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-5. Deploy
+* Supabase project is configured
+* `contacts` table exists
+* Row Level Security (RLS) is enabled with proper insert policy
 
-## How I Used AI (Cursor/Qoder)
+Example policy:
 
-1. **Scaffolding & Setup:** Used AI to quickly set up the Next.js project structure and configure Supabase client
-2. **Code Generation:** AI helped generate the form component with validation, TypeScript interfaces, and Tailwind CSS styling
-3. **Error Handling:** AI assisted in implementing proper error handling and user feedback mechanisms
+```sql
+CREATE POLICY "Allow insert"
+ON contacts
+FOR INSERT
+TO anon
+WITH CHECK (true);
+```
 
-## Scripts
+---
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm start` - Start production server
-- `npm run lint` - Run ESLint
+## 🌍 Deployment (Render)
+
+1. Push code to GitHub
+2. Go to https://render.com
+3. Create a new **Web Service**
+4. Connect your repository
+5. Add environment variables:
+
+   * NEXT_PUBLIC_SUPABASE_URL
+   * NEXT_PUBLIC_SUPABASE_ANON_KEY
+6. Use build command:
+
+```bash
+npm install && npm run build
+```
+
+7. Use start command:
+
+```bash
+npm start
+```
+
+8. Deploy and verify form submission works
+
+---
+
+## 🤖 AI Usage (Cursor / Qoder)
+
+* Used AI to scaffold the Next.js project and Supabase integration
+* Generated form logic using React Hook Form and Zod
+* Assisted in improving UI with Tailwind CSS
+* Verified generated code manually before integration
+
+---
+
+## 📜 Scripts
+
+* npm run dev → Start development server
+* npm run build → Build production app
+* npm start → Run production server
+* npm run lint → Run linter
+
+---
+
+## 📌 Notes
+
+* Environment variables are securely managed and not committed
+* UI is intentionally minimal to focus on functionality and clarity
+* Error handling is implemented for database operations
+
+---
